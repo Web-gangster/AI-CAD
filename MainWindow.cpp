@@ -8,6 +8,7 @@
 #include <QAction>
 #include <QToolBar>
 #include <QTimer>
+#include "ViewportWidget.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -55,10 +56,21 @@ MainWindow::MainWindow(QWidget *parent)
     leftLayout->addWidget(leftHeader);
     leftLayout->addStretch();
 
-    QLabel *rightPanel = new QLabel(tr("3D Viewport"), splitter);
-    rightPanel->setStyleSheet("background-color: #222; color: white;");\
-    rightPanel->setAlignment(Qt::AlignTop | Qt::AlignHCenter);
-    rightPanel->setContentsMargins(0, 10, 0, 0);
+    QWidget *rightPanel = new QWidget(splitter);
+    rightPanel->setStyleSheet("background-color: #222;");
+
+    QVBoxLayout *rightLayout = new QVBoxLayout(rightPanel);
+    QLabel *rightHeader = new QLabel("3D Viewport", rightPanel);
+    rightHeader->setStyleSheet("background-color: #333; color: white; padding: 5px;");
+    rightHeader->setFixedHeight(25);
+    rightHeader->setAlignment(Qt::AlignCenter);
+    rightHeader->setMinimumWidth(0);
+    rightHeader->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
+
+    ViewportWidget *viewport = new ViewportWidget(rightPanel);
+
+    rightLayout->addWidget(rightHeader);
+    rightLayout->addWidget(viewport);
     
 
     mainLayout->addWidget(splitter);
