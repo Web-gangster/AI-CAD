@@ -1,0 +1,29 @@
+# Build
+build/
+
+# VS Code
+.vscode/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# MSVC
+*.user
+*.suo
+*.opensdf
+*.sdf
+.vs/
+
+# Qt
+*.pro.user
+moc_*
+qrc_*
+ui_*
+
+# Compiled
+*.exe
+*.obj
+*.ilk
+*.pdb
